@@ -1,12 +1,18 @@
-import sqlite3
+import os
 from pathlib import Path
+import sqlite3
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_PATH = BASE_DIR / "fest.db"
+
+# On Vercel / serverless platforms, only /tmp is writable
+if os.environ.get("VERCEL"):
+    DB_PATH = Path("/tmp/fest.db")
+else:
+    DB_PATH = BASE_DIR / "fest.db"
 
 
-def get_db_connection() -> sqlite3.Connection:
-    """Create and return a SQLite connection to fest.db with Row factory enabled."""
+def _raw_connection() -> sqlite3.Connection:
+    """Open connection to the SQLite database with Row factory and foreign keys."""
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
@@ -15,7 +21,8 @@ def get_db_connection() -> sqlite3.Connection:
 
 def init_db() -> None:
     """Create the events and registrations tables if they do not already exist."""
-    conn = get_db_connection()
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    conn = _raw_connection()
     try:
         cursor = conn.cursor()
         cursor.execute(
@@ -51,6 +58,18 @@ def init_db() -> None:
         conn.commit()
     finally:
         conn.close()
+
+
+def get_db_connection() -> sqlite3.Connection:
+    """Create and return a SQLite connection to fest.db with Row factory enabled."""
+    if not DB_PATH.exists():
+        init_db()
+        try:
+            from backend.seed_data import seed_events
+            seed_events()
+        except Exception:
+            pass
+    return _raw_connection()
 
 
 # Ensure tables exist whenever database module is imported

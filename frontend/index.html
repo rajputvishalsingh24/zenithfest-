@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zenith '26 — Annual College Techno-Cultural &amp; Sports Fest</title>
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+  />
+  <!--
+    NOTE: Using the Tailwind CSS Play CDN for this local classroom project.
+    A production deployment would use a compiled and purged stylesheet instead.
+  -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            zenith: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              900: '#2e1065',
+            }
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(12px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.35s ease-out forwards',
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 antialiased selection:bg-violet-500 selection:text-white overflow-x-hidden flex flex-col">
+
+  <!-- Top Navbar -->
+  <header class="sticky top-0 z-30 backdrop-blur-md bg-slate-950/85 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <a href="/" class="flex items-center gap-2.5 group focus:outline-none">
+        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-500 flex items-center justify-center text-lg shadow-lg shadow-violet-500/25 group-hover:scale-105 transition-transform">
+          ⚡
+        </span>
+        <div>
+          <span class="text-lg sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-violet-200 to-fuchsia-300 bg-clip-text text-transparent">
+            Zenith '26
+          </span>
+          <span class="hidden sm:inline-block ml-2 text-xs font-medium px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-300 border border-violet-500/30">
+            Nov 14–15
+          </span>
+        </div>
+      </a>
+
+      <nav class="flex items-center gap-2 sm:gap-4">
+        <a
+          href="#explore-events"
+          class="text-xs sm:text-sm font-medium text-slate-300 hover:text-white px-2.5 py-1.5 rounded-lg hover:bg-slate-800/70 active:scale-95 transition"
+        >
+          Events
+        </a>
+        <a
+          href="admin.html"
+          class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-xl bg-slate-800 hover:bg-violet-600 active:bg-violet-700 text-slate-100 border border-slate-700 hover:border-violet-500 shadow-sm transition-all active:scale-95"
+        >
+          <span>📊</span>
+          <span>Admin Dashboard</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden border-b border-slate-800/80 bg-gradient-to-b from-violet-950/40 via-slate-950 to-slate-950">
+    <div class="absolute inset-0 pointer-events-none opacity-30 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-fuchsia-600/30 via-violet-600/10 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs sm:text-sm font-semibold mb-5">
+        <span>🗓️ November 14–15, 2026</span>
+        <span class="text-slate-600">•</span>
+        <span>Main Campus Arena</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white max-w-4xl mx-auto leading-tight">
+        Where Code, Culture &amp; Adrenaline Collide at
+        <span class="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-amber-300 bg-clip-text text-transparent">
+          Zenith '26
+        </span>
+      </h1>
+
+      <p class="mt-4 sm:mt-6 text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        48 hours of hackathons, robo-battles, concert nights, LAN esports, and hands-on creator workshops. Claim your spot before seats run out!
+      </p>
+
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="#explore-events"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm sm:text-base bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 active:scale-95 text-white shadow-lg shadow-violet-600/30 transition-all"
+        >
+          <span>Explore 14+ Fest Events</span>
+          <span>↓</span>
+        </a>
+        <a
+          href="admin.html"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm sm:text-base bg-slate-900/90 hover:bg-slate-800 active:scale-95 text-slate-200 border border-slate-700 transition-all"
+        >
+          <span>Live Fest Stats</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Search, Category Filters & Events Grid -->
+  <main id="explore-events" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <!-- Filter & Search Bar -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 sm:p-5 mb-8 shadow-xl">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <!-- Search Box -->
+        <div class="relative flex-1 max-w-xl">
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 pointer-events-none">
+            🔍
+          </span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search events by title (e.g. Hackathon, Dance, Valorant)..."
+            class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-700/80 text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition"
+          />
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div id="category-filters" class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0 no-scrollbar" role="tablist" aria-label="Event categories">
+          <button
+            type="button"
+            data-category="All"
+            class="category-btn shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all active:scale-95 bg-violet-600 text-white shadow-md shadow-violet-600/30"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            data-category="Technical"
+            class="category-btn shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all active:scale-95 bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+          >
+            💻 Technical
+          </button>
+          <button
+            type="button"
+            data-category="Cultural"
+            class="category-btn shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all active:scale-95 bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+          >
+            🎭 Cultural
+          </button>
+          <button
+            type="button"
+            data-category="Sports"
+            class="category-btn shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all active:scale-95 bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+          >
+            ⚽ Sports
+          </button>
+          <button
+            type="button"
+            data-category="Gaming"
+            class="category-btn shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all active:scale-95 bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+          >
+            🎮 Gaming
+          </button>
+          <button
+            type="button"
+            data-category="Workshop"
+            class="category-btn shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all active:scale-95 bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+          >
+            🛠️ Workshop
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Filter Status Row -->
+      <div class="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+        <span id="events-count-label">Loading events...</span>
+        <button
+          id="clear-filters-btn"
+          type="button"
+          class="hidden text-violet-400 hover:text-violet-300 font-medium underline underline-offset-2 active:scale-95 transition"
+        >
+          Reset filters
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div id="events-loading" class="hidden py-16 text-center">
+      <div class="inline-block w-10 h-10 border-4 border-violet-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+      <p class="text-slate-300 font-medium">Loading Zenith '26 events...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="events-error" class="hidden bg-rose-950/40 border border-rose-500/40 rounded-2xl p-8 text-center max-w-lg mx-auto my-8">
+      <div class="text-3xl mb-3">⚠️</div>
+      <h2 class="text-lg font-bold text-rose-200">Unable to Load Events</h2>
+      <p id="events-error-message" class="text-sm text-rose-300/90 mt-1">
+        Could not connect to the backend API. Make sure the FastAPI server is running on port 8000.
+      </p>
+      <button
+        id="retry-events-btn"
+        type="button"
+        class="mt-5 px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 active:scale-95 text-white text-sm font-semibold transition"
+      >
+        Try Again
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div id="events-empty" class="hidden bg-slate-900/60 border border-slate-800 rounded-2xl p-10 text-center max-w-lg mx-auto my-8">
+      <div class="text-4xl mb-3">🔎</div>
+      <h2 class="text-lg font-bold text-white">No events match your search</h2>
+      <p class="text-sm text-slate-400 mt-1">
+        Try searching with a different keyword or switching the category filter back to "All".
+      </p>
+      <button
+        id="empty-reset-btn"
+        type="button"
+        class="mt-5 px-5 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-500 active:scale-95 text-white text-sm font-semibold transition"
+      >
+        Show All Events
+      </button>
+    </div>
+
+    <!-- Events Grid -->
+    <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </main>
+
+  <!-- Event Detail & Registration Modal -->
+  <div
+    id="event-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-sm overflow-y-auto"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-event-title"
+  >
+    <div class="relative w-full max-w-2xl bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl overflow-hidden my-8 animate-fade-in-up">
+      <!-- Modal Top Header -->
+      <div class="flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-800 bg-slate-900/90">
+        <div class="flex items-center gap-3.5">
+          <div
+            id="modal-event-icon"
+            class="w-12 h-12 rounded-2xl bg-violet-500/15 border border-violet-500/30 flex items-center justify-center text-2xl shrink-0"
+          >
+            ✨
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span
+                id="modal-event-category"
+                class="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-violet-500/20 text-violet-300 border border-violet-500/30"
+              >
+                Category
+              </span>
+              <span
+                id="modal-event-seat-badge"
+                class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"
+              >
+                Seats Available
+              </span>
+            </div>
+            <h2 id="modal-event-title" class="text-xl sm:text-2xl font-extrabold text-white mt-1">
+              Event Title
+            </h2>
+          </div>
+        </div>
+        <button
+          id="close-modal-btn"
+          type="button"
+          aria-label="Close modal"
+          class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 hover:text-white flex items-center justify-center text-lg font-bold transition"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-6 space-y-6 max-h-[80vh] overflow-y-auto">
+        <!-- Loading state inside modal -->
+        <div id="modal-loading" class="hidden py-8 text-center">
+          <div class="inline-block w-8 h-8 border-4 border-violet-500 border-t-transparent rounded-full animate-spin mb-2"></div>
+          <p class="text-xs text-slate-400">Fetching latest event details...</p>
+        </div>
+
+        <div id="modal-content-body" class="space-y-6">
+          <!-- Description -->
+          <p id="modal-event-description" class="text-sm sm:text-base text-slate-300 leading-relaxed"></p>
+
+          <!-- Event Metadata Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-slate-950/70 p-3.5 rounded-xl border border-slate-800 text-xs">
+            <div>
+              <span class="text-slate-400 block">📅 Date &amp; Time</span>
+              <span id="modal-event-datetime" class="font-semibold text-slate-100 mt-0.5 block"></span>
+            </div>
+            <div>
+              <span class="text-slate-400 block">📍 Venue</span>
+              <span id="modal-event-venue" class="font-semibold text-slate-100 mt-0.5 block"></span>
+            </div>
+            <div>
+              <span class="text-slate-400 block">🎟️ Entry Fee</span>
+              <span id="modal-event-fee" class="font-semibold text-slate-100 mt-0.5 block"></span>
+            </div>
+            <div>
+              <span class="text-slate-400 block">💺 Availability</span>
+              <span id="modal-event-seats" class="font-semibold text-slate-100 mt-0.5 block"></span>
+            </div>
+          </div>
+
+          <!-- Registration Form Section -->
+          <div class="border-t border-slate-800 pt-5">
+            <h3 class="text-base sm:text-lg font-bold text-white mb-1">Student Registration</h3>
+            <p class="text-xs text-slate-400 mb-4">
+              Enter your college details below to reserve your seat.
+            </p>
+
+            <!-- Inline Error Alert -->
+            <div
+              id="reg-form-error"
+              class="hidden mb-4 p-3.5 rounded-xl bg-rose-950/70 border border-rose-500/50 text-rose-200 text-xs sm:text-sm font-medium flex items-start gap-2.5"
+              role="alert"
+            >
+              <span class="text-base leading-none">⚠️</span>
+              <span id="reg-form-error-text"></span>
+            </div>
+
+            <!-- Inline Success Alert -->
+            <div
+              id="reg-form-success"
+              class="hidden mb-4 p-4 rounded-xl bg-emerald-950/70 border border-emerald-500/50 text-emerald-200 text-xs sm:text-sm font-medium flex items-start gap-2.5"
+              role="status"
+            >
+              <span class="text-lg leading-none">🎉</span>
+              <span id="reg-form-success-text"></span>
+            </div>
+
+            <form id="registration-form" novalidate class="space-y-4">
+              <input type="hidden" id="reg-event-id" />
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="reg-student-name" class="block text-xs font-semibold text-slate-300 mb-1">
+                    Student Name <span class="text-rose-400">*</span>
+                  </label>
+                  <input
+                    id="reg-student-name"
+                    name="student_name"
+                    type="text"
+                    placeholder="Aarav Sharma"
+                    required
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  />
+                </div>
+
+                <div>
+                  <label for="reg-roll-number" class="block text-xs font-semibold text-slate-300 mb-1">
+                    Roll Number <span class="text-rose-400">*</span>
+                  </label>
+                  <input
+                    id="reg-roll-number"
+                    name="roll_number"
+                    type="text"
+                    placeholder="2026CS1042"
+                    required
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="reg-email" class="block text-xs font-semibold text-slate-300 mb-1">
+                    College Email <span class="text-rose-400">*</span>
+                  </label>
+                  <input
+                    id="reg-email"
+                    name="email"
+                    type="email"
+                    placeholder="aarav@college.edu"
+                    required
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  />
+                </div>
+
+                <div>
+                  <label for="reg-phone" class="block text-xs font-semibold text-slate-300 mb-1">
+                    Phone Number <span class="text-slate-500">(optional)</span>
+                  </label>
+                  <input
+                    id="reg-phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 text-sm focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  />
+                </div>
+              </div>
+
+              <div class="pt-2 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-3">
+                <button
+                  id="cancel-modal-btn"
+                  type="button"
+                  class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-300 text-sm font-semibold transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  id="submit-registration-btn"
+                  type="submit"
+                  class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 active:scale-95 text-white text-sm font-bold shadow-lg shadow-violet-600/25 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  Confirm Registration
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-6 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <p>⚡ <strong class="text-slate-300">Zenith '26</strong> — Annual College Techno-Cultural &amp; Sports Festival (Nov 14–15, 2026)</p>
+      <p>
+        Built with FastAPI, SQLite &amp; Tailwind CSS •
+        <a href="admin.html" class="text-violet-400 hover:text-violet-300 underline">Admin Portal</a> •
+        <a href="/docs" target="_blank" rel="noopener" class="text-violet-400 hover:text-violet-300 underline">API Docs (/docs)</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

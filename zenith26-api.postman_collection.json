@@ -1,0 +1,299 @@
+{
+  "info": {
+    "_postman_id": "9f8c7a6e-5d4b-4c3a-9e2f-1a2b3c4d5e6f",
+    "name": "Zenith '26 College Fest API",
+    "description": "Postman Collection for testing all Zenith '26 College Fest Management System API endpoints (Step 10).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET /api/events (with example category and search query params)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/events?category=Technical&search=Hack",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "events"
+          ],
+          "query": [
+            {
+              "key": "category",
+              "value": "Technical",
+              "description": "Optional category filter (Technical, Cultural, Sports, Gaming, Workshop)"
+            },
+            {
+              "key": "search",
+              "value": "Hack",
+              "description": "Optional case-insensitive title search"
+            }
+          ]
+        },
+        "description": "Fetches the list of events filtered by category and title search, including dynamically computed available_seats."
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/events/{event_id} (Event ID 1)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/events/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "events",
+            "1"
+          ]
+        },
+        "description": "Fetches full details for Event #1 (or returns 404 if the event ID does not exist)."
+      },
+      "response": []
+    },
+    {
+      "name": "POST /api/events/1/register — Valid Registration (Should Succeed 201)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"student_name\": \"Aarav Sharma\",\n  \"roll_number\": \"2026CS1042\",\n  \"email\": \"aarav.sharma@college.edu\",\n  \"phone\": \"+91 9876543210\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/events/1/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "events",
+            "1",
+            "register"
+          ]
+        },
+        "description": "Registers a student for Event #1 with all required fields present. Should return 201 Created on first run (and 409 'Already registered' if sent a second time with the same email)."
+      },
+      "response": [
+        {
+          "name": "Example 1: Valid Body — Should Succeed (201 Created)",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"student_name\": \"Aarav Sharma\",\n  \"roll_number\": \"2026CS1042\",\n  \"email\": \"aarav.sharma@college.edu\",\n  \"phone\": \"+91 9876543210\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events/1/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "1",
+                "register"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 1,\n  \"event_id\": 1,\n  \"student_name\": \"Aarav Sharma\",\n  \"registered_at\": \"2026-11-14 10:00:00\"\n}"
+        },
+        {
+          "name": "Example 2: Missing Required Field (email omitted) — Should Return 400 Bad Request",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"student_name\": \"Aarav Sharma\",\n  \"roll_number\": \"2026CS1042\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/events/1/register",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "1",
+                "register"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"detail\": \"Missing required field(s): email\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "POST /api/events/1/register — Missing Required Field (Should Return 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"student_name\": \"Priya Nair\",\n  \"roll_number\": \"2026EC1019\",\n  \"email\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/events/1/register",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "events",
+            "1",
+            "register"
+          ]
+        },
+        "description": "Attempts to register with a missing required field (empty/omitted email). Server-side validation rejects it with 400 Bad Request."
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/registrations",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/registrations",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "registrations"
+          ],
+          "query": [
+            {
+              "key": "event_id",
+              "value": "1",
+              "disabled": true,
+              "description": "Enable to filter registrations to a single event_id"
+            }
+          ]
+        },
+        "description": "Returns all student registrations including the joined event_title."
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/stats",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/stats",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "stats"
+          ]
+        },
+        "description": "Computes live fest statistics from SQLite: total_events, total_registrations, total_capacity, overall_utilization_pct, upcoming_events_count, and events_by_category."
+      },
+      "response": []
+    }
+  ]
+}

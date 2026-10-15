@@ -402,6 +402,9 @@ registrationForm.addEventListener("submit", async (e) => {
     showFormSuccess(
       `Registered ${data.student_name} for "${eventTitle}"! Confirmation ID #${data.id}.`
     );
+    if (window.triggerCrackerBarrage) {
+      window.triggerCrackerBarrage(10);
+    }
     registrationForm.reset();
 
     // Immediately re-fetch this event's details & refresh the grid so available_seats updates live
